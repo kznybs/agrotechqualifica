@@ -25,7 +25,11 @@
         body { font-family: 'Poppins', sans-serif; }
         .bg-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         [x-cloak] { display: none !important; }
-        .nav-link-active { background-color: #d1fae5; color: #059669; }
+        .nav-link-active { 
+            background-color: #e6f7f2; /* Cor de fundo bem clara */
+            color: #047857; /* Texto em tom de verde */
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -46,42 +50,83 @@
 
         <!-- Header & Navigation -->
         <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-50">
+            <!-- Top Bar -->
             <div class="hidden lg:block bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white">
-                <div class="container mx-auto px-6"><div class="grid grid-cols-3 gap-8 py-3 text-sm"><div class="flex items-center justify-center"><i data-lucide="map-pin" class="h-5 w-5 mr-3 text-emerald-400"></i><span>Rua Marechal Rondon, 451, Barra do Bugres, Brasil</span></div><div class="flex items-center justify-center border-x border-emerald-700"><i data-lucide="mail" class="h-5 w-5 mr-3 text-emerald-400"></i><span>agrotech@qualifica.com</span></div><div class="flex items-center justify-center"><i data-lucide="phone" class="h-5 w-5 mr-3 text-emerald-400"></i><span>+55 65 98765-4321</span></div></div></div>
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-3 items-center gap-8 py-2 text-sm">
+                        <div class="flex items-center">
+                            <div class="bg-emerald-600 p-2 rounded-full mr-3">
+                                <i data-lucide="map-pin" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs uppercase">NOSSO ESCRITÓRIO</p>
+                                <p class="text-xs text-emerald-200">Rua Marechal Rondon, 451, Barra do Bugres</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center border-x border-emerald-700 px-4">
+                             <div class="bg-emerald-600 p-2 rounded-full mr-3">
+                                <i data-lucide="mail" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs uppercase">EMAIL</p>
+                                <p class="text-xs text-emerald-200">agrotech@qualifica.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end">
+                             <div class="bg-emerald-600 p-2 rounded-full mr-3">
+                                <i data-lucide="phone" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs uppercase">TELEFONE</p>
+                                <p class="text-xs text-emerald-200">+55 65 98765-4321</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Main Navigation -->
             <nav class="bg-white/90 backdrop-blur-md shadow-md">
                 <div class="container mx-auto px-6">
-                    <div class="flex justify-between items-center py-4">
-                        <a href="index.html" class="flex items-center group"><div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg"><i data-lucide="cpu" class="h-8 w-8 text-white"></i></div><div><h1 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 uppercase tracking-tight">AgroTech</h1><p class="text-sm text-gray-600 font-semibold">Qualifica</p></div></a>
-                        <div class="hidden lg:flex items-center space-x-1">
-                            <a href="index.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Início</a>
-                            <a href="about.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Sobre</a>
+                    <div class="flex justify-between items-center py-3">
+                        <a href="index.html" class="flex items-center group">
+                            <div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg">
+                                <i data-lucide="cpu" class="h-8 w-8 text-white"></i>
+                            </div>
+                            <div>
+                                <h1 class="text-2xl font-black text-gray-800 uppercase tracking-tight">AgroTech</h1>
+                                <p class="text-sm text-gray-600 font-semibold leading-tight">Qualifica</p>
+                            </div>
+                        </a>
+                        <div class="hidden lg:flex items-center space-x-2">
+                            <a href="index.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Início</a>
+                            <a href="about.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Sobre</a>
                             <div class="relative" @mouseenter="activeDropdown = 'solucoes'" @mouseleave="activeDropdown = null">
-                                <a href="services.html" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-all duration-300 rounded-lg hover:bg-emerald-50 nav-link-active">Soluções <i data-lucide="chevron-down" class="ml-1 h-4 w-4"></i></a>
+                                <a href="services.html" class="flex items-center px-4 py-2 rounded-lg nav-link-active">Soluções <i data-lucide="chevron-down" class="ml-1 h-4 w-4"></i></a>
                                 <div x-show="activeDropdown === 'solucoes'" class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden" x-transition x-cloak>
                                     <a href="VRExperience.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Treinamento VR</a>
                                     <a href="training.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Capacitação</a>
-                                    <a href="services.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 bg-emerald-50 transition-colors font-medium">Consultoria</a>
+                                    <a href="services.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Consultoria</a>
                                 </div>
                             </div>
-                            <a href="pricing.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Planos</a>
-                            <a href="team.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Equipa</a>
-                            <a href="blog.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Blog</a>
-                            <a href="contact.html" class="ml-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 px-6 rounded-xl hover:opacity-90 transition shadow-md">Contato</a>
+                            <a href="pricing.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Planos</a>
+                            <a href="team.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Equipa</a>
+                            <a href="blog.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Blog</a>
+                            <a href="contact.html" class="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-5 rounded-lg transition-colors shadow-md">Contato</a>
                         </div>
                         <div class="lg:hidden"><button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 focus:outline-none"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
                     </div>
                 </div>
+                <!-- Mobile Menu -->
                 <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden border-t" x-transition x-cloak>
                     <div class="px-6 py-4 space-y-2">
                         <a href="index.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Início</a>
                         <a href="about.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Sobre</a>
-                        <div x-data="{ open: true }"><button @click="open = !open" class="w-full flex justify-between items-center py-2 rounded-md text-gray-700 bg-emerald-50 text-emerald-600 font-semibold"><span>Soluções</span><i data-lucide="chevron-down" :class="{'rotate-180': open}" class="h-5 w-5 transition-transform"></i></button><div x-show="open" class="ml-4 mt-2 space-y-1"><a href="VRExperience.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Treinamento VR</a><a href="training.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Capacitação</a><a href="services.html" class="block px-4 py-2 text-sm text-gray-600 text-emerald-600 bg-emerald-50 rounded-lg transition-colors">Consultoria</a></div></div>
+                        <div x-data="{ open: true }"><button @click="open = !open" class="w-full flex justify-between items-center py-2 rounded-md font-semibold nav-link-active"><span>Soluções</span><i data-lucide="chevron-down" :class="{'rotate-180': open}" class="h-5 w-5 transition-transform"></i></button><div x-show="open" class="ml-4 mt-2 space-y-1"><a href="VRExperience.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Treinamento VR</a><a href="training.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Capacitação</a><a href="services.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Consultoria</a></div></div>
                         <a href="pricing.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Planos</a>
                         <a href="team.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Equipa</a>
                         <a href="blog.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Blog</a>
-                        <a href="contact.html" class="block text-center mt-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 rounded-xl hover:opacity-90 transition">Contato</a>
+                        <a href="contact.html" class="block text-center mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition">Contato</a>
                     </div>
                 </div>
             </nav>
