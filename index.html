@@ -86,7 +86,7 @@
             <div class="w-full max-w-4xl mx-auto px-4">
                  <button @click="videoModalOpen = false" class="absolute top-4 right-4 text-white hover:text-gray-300 text-4xl font-bold">&times;</button>
                  <div class="bg-black rounded-lg overflow-hidden shadow-2xl aspect-video relative">
-                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/JS4sw26Ko7M?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     <iframe class="w-full h-full" :src="videoModalOpen ? 'https://www.youtube.com/embed/JS4sw26Ko7M?autoplay=1' : ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                  </div>
             </div>
         </div>
