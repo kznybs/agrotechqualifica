@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTech Qualifica - Início</title>
+    <meta name="description" content="Plataforma de treinamento em realidade virtual para operadores de máquinas agrícolas. Capacitação inovadora e segura para o agronegócio.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom right, #064e3b, #047857, #059669);
+        }
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        [x-cloak] { display: none !important; }
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .btn-play-pulse::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 100%;
+            animation: pulse-border 1500ms ease-out infinite;
+        }
+        @keyframes pulse-border {
+            0% { transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5); opacity: 0; }
+        }
+        /* Style for active nav link */
+        .nav-link-active {
+            background-color: #d1fae5; /* bg-emerald-100 */
+            color: #059669; /* text-emerald-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div x-data="{ loading: true, videoModalOpen: false, activeDropdown: null }" x-init="setTimeout(() => loading = false, 1500)">
+        
+        <!-- Loading Screen -->
+        <div x-show="loading" class="fixed inset-0 bg-emerald-800 flex flex-col items-center justify-center z-[1000]" x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+            <div class="flex items-center space-x-4">
+                <i data-lucide="cpu" class="h-12 w-12 text-white animate-spin [animation-duration:3s]"></i>
+                <div>
+                    <h1 class="text-3xl font-black text-white uppercase">AgroTech</h1>
+                    <p class="text-emerald-200 font-semibold">Qualifica</p>
+                </div>
+            </div>
+            <p class="text-white mt-8 animate-pulse">A carregar o futuro do agronegócio...</p>
+        </div>
+
+        <!-- Video Modal -->
+        <div x-show="videoModalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[999]" @click.away="videoModalOpen = false" x-cloak>
+            <div class="w-full max-w-4xl mx-auto px-4">
+                 <button @click="videoModalOpen = false" class="absolute top-4 right-4 text-white hover:text-gray-300 text-4xl font-bold">&times;</button>
+                 <div class="bg-black rounded-lg overflow-hidden shadow-2xl aspect-video relative">
+                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/JS4sw26Ko7M?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Header & Navigation -->
+        <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-50">
+            <div class="hidden lg:block bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white">
+                <div class="container mx-auto px-6"><div class="grid grid-cols-3 gap-8 py-3 text-sm"><div class="flex items-center justify-center"><i data-lucide="map-pin" class="h-5 w-5 mr-3 text-emerald-400"></i><span>Rua Marechal Rondon, 451, Barra do Bugres, Brasil</span></div><div class="flex items-center justify-center border-x border-emerald-700"><i data-lucide="mail" class="h-5 w-5 mr-3 text-emerald-400"></i><span>agrotech@qualifica.com</span></div><div class="flex items-center justify-center"><i data-lucide="phone" class="h-5 w-5 mr-3 text-emerald-400"></i><span>+55 65 98765-4321</span></div></div></div>
+            </div>
+
+            <nav class="bg-white/90 backdrop-blur-md shadow-md">
+                <div class="container mx-auto px-6">
+                    <div class="flex justify-between items-center py-4">
+                        <a href="index.html" class="flex items-center group"><div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg"><i data-lucide="cpu" class="h-8 w-8 text-white"></i></div><div><h1 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 uppercase tracking-tight">AgroTech</h1><p class="text-sm text-gray-600 font-semibold">Qualifica</p></div></a>
+                        <div class="hidden lg:flex items-center space-x-1">
+                            <a href="index.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold nav-link-active">Início</a>
+                            <a href="about.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Sobre</a>
+                            <div class="relative" @mouseenter="activeDropdown = 'solucoes'" @mouseleave="activeDropdown = null">
+                                <a href="services.html" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-all duration-300 rounded-lg hover:bg-emerald-50">Soluções <i data-lucide="chevron-down" class="ml-1 h-4 w-4"></i></a>
+                                <div x-show="activeDropdown === 'solucoes'" class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden" x-transition x-cloak>
+                                    <a href="VRExperience.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Treinamento VR</a>
+                                    <a href="training.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Capacitação</a>
+                                    <a href="services.html" class="block px-6 py-3 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors font-medium">Consultoria</a>
+                                </div>
+                            </div>
+                            <a href="pricing.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Planos</a>
+                            <a href="team.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Equipa</a>
+                            <a href="blog.html" class="px-3 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Blog</a>
+                            <a href="contact.html" class="ml-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 px-6 rounded-xl hover:opacity-90 transition shadow-md">Contato</a>
+                        </div>
+                        <div class="lg:hidden"><button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 focus:outline-none"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
+                    </div>
+                </div>
+                <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden border-t" x-transition x-cloak>
+                    <div class="px-6 py-4 space-y-2">
+                        <a href="index.html" class="block py-2 rounded-md text-gray-700 bg-emerald-50 text-emerald-600 font-semibold">Início</a>
+                        <a href="about.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Sobre</a>
+                        <div x-data="{ open: false }"><button @click="open = !open" class="w-full flex justify-between items-center py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold"><span>Soluções</span><i data-lucide="chevron-down" :class="{'rotate-180': open}" class="h-5 w-5 transition-transform"></i></button><div x-show="open" class="ml-4 mt-2 space-y-1"><a href="VRExperience.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Treinamento VR</a><a href="training.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Capacitação</a><a href="services.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Consultoria</a></div></div>
+                        <a href="pricing.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Planos</a>
+                        <a href="team.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Equipa</a>
+                        <a href="blog.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Blog</a>
+                        <a href="contact.html" class="block text-center mt-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 rounded-xl hover:opacity-90 transition">Contato</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section id="inicio" class="hero-bg text-white relative overflow-hidden">
+                <div class="bg-pattern min-h-screen flex items-center">
+                    <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 items-center gap-12">
+                        <!-- Left Column: Text Content -->
+                        <div class="text-center lg:text-left">
+                            <h1 class="text-5xl md:text-7xl font-black uppercase"><span class="block">AgroTech</span><span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">Qualifica</span></h1>
+                            <h2 class="text-2xl md:text-3xl font-bold text-emerald-100 mt-4 mb-6">Revolucionando a Agricultura com VR</h2>
+                            <p class="text-lg md:text-xl text-emerald-200 mt-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">Transforme o treinamento agrícola com a nossa plataforma de realidade virtual. Capacitação segura, eficiente e inovadora para o futuro do agronegócio.</p>
+                            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="pricing.html" class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-4 px-8 rounded-xl hover:opacity-90 transition text-lg shadow-lg inline-flex items-center justify-center hover:scale-105 transform">Começar Agora <i data-lucide="arrow-right" class="inline-block ml-2 h-5 w-5"></i></a>
+                                <button @click="videoModalOpen = true" class="group flex items-center text-white font-semibold py-4 px-8 rounded-xl hover:bg-white/10 transition justify-center hover:scale-105 transform">
+                                    <div class="relative mr-3 btn-play-pulse">
+                                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"><i data-lucide="play" class="h-7 w-7 text-white ml-1" style="fill: currentColor;"></i></div>
+                                    </div>Assistir Demo
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Right Column: Logo Image -->
+                        <div class="hidden lg:flex justify-center items-center">
+                            <img src="https://i.imgur.com/K2papBR.png" alt="Logo da AgroTech Qualifica com um mascote de óculos VR" class="max-w-md w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stats Section -->
+            <section id="stats" class="py-16 lg:py-24 bg-gray-100">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">Números que <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Impressionam</span></h2>
+                        <p class="text-lg text-gray-600">Nossa plataforma já transformou milhares de vidas no agronegócio brasileiro.</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div x-data="{ count: 0 }" x-init="let end = 5000; let duration = 2000; let step = end / (duration / 16); let current = 0; const timer = setInterval(() => { current += step; if (current >= end) { clearInterval(timer); current = end; } count = Math.ceil(current); }, 16);" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform">
+                            <i data-lucide="users" class="h-10 w-10 mx-auto text-blue-500 mb-3"></i><p class="text-4xl font-black text-gray-900"><span x-text="count">0</span>+</p><p class="text-gray-600 font-semibold">Alunos Treinados</p>
+                        </div>
+                        <div x-data="{ count: 0 }" x-init="let end = 98; let duration = 2000; let step = end / (duration / 16); let current = 0; const timer = setInterval(() => { current += step; if (current >= end) { clearInterval(timer); current = end; } count = Math.ceil(current); }, 16);" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform">
+                            <i data-lucide="award" class="h-10 w-10 mx-auto text-emerald-500 mb-3"></i><p class="text-4xl font-black text-gray-900"><span x-text="count">0</span>%</p><p class="text-gray-600 font-semibold">Taxa de Aprovação</p>
+                        </div>
+                        <div x-data="{ count: 0 }" x-init="let end = 15; let duration = 2000; let step = end / (duration / 16); let current = 0; const timer = setInterval(() => { current += step; if (current >= end) { clearInterval(timer); current = end; } count = Math.ceil(current); }, 16);" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform">
+                            <i data-lucide="globe" class="h-10 w-10 mx-auto text-purple-500 mb-3"></i><p class="text-4xl font-black text-gray-900"><span x-text="count">0</span>+</p><p class="text-gray-600 font-semibold">Estados Atendidos</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform">
+                            <i data-lucide="zap" class="h-10 w-10 mx-auto text-orange-500 mb-3"></i><p class="text-4xl font-black text-gray-900">24/7</p><p class="text-gray-600 font-semibold">Suporte Online</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
+            <section id="features" class="py-16 lg:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">Por Que Escolher a <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">AgroTech?</span></h2>
+                        <p class="text-lg text-gray-600">Oferecemos uma abordagem revolucionária para a capacitação agrícola, focada na segurança, eficiência e inovação.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
+                            <div class="inline-block p-4 bg-emerald-100 text-emerald-600 rounded-full mb-4">
+                                <i data-lucide="shield-check" class="h-8 w-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Aprendizagem Segura</h3>
+                            <p class="text-gray-600">Treine em cenários realistas sem os riscos do mundo real. Perfeito para iniciantes e para aprender a operar máquinas complexas.</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
+                            <div class="inline-block p-4 bg-blue-100 text-blue-600 rounded-full mb-4">
+                                <i data-lucide="award" class="h-8 w-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Certificação Reconhecida</h3>
+                            <p class="text-gray-600">Receba certificados que valorizam seu currículo e abrem portas no mercado de trabalho do agronegócio.</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
+                             <div class="inline-block p-4 bg-purple-100 text-purple-600 rounded-full mb-4">
+                                <i data-lucide="cpu" class="h-8 w-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Tecnologia de Ponta</h3>
+                            <p class="text-gray-600">Utilizamos o que há de mais moderno em realidade virtual para criar uma experiência de imersão total e eficaz.</p>
+                        </div>
+                         <div class="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
+                             <div class="inline-block p-4 bg-orange-100 text-orange-600 rounded-full mb-4">
+                                <i data-lucide="dollar-sign" class="h-8 w-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Redução de Custos</h3>
+                            <p class="text-gray-600">Elimine despesas com combustível, manutenção de máquinas e possíveis danos durante o treinamento prático.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="py-16 lg:py-24 bg-gray-100">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">O Que Nossos <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Alunos Dizem</span></h2>
+                        <p class="text-lg text-gray-600">Histórias de quem já está a transformar o seu futuro com a AgroTech Qualifica.</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="[Foto de João Silva]" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">João Silva</h4>
+                                    <p class="text-sm text-gray-500">Operador de Colheitadeira, Mato Grosso</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"A simulação em VR me deu a confiança que eu precisava para operar a máquina nova da fazenda. Aprendi os controles em um ambiente seguro antes de ir para o campo. Fez toda a diferença!"</p>
+                        </div>
+                         <div class="bg-white p-8 rounded-2xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="[Foto de Maria Oliveira]" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">Maria Oliveira</h4>
+                                    <p class="text-sm text-gray-500">Estudante de Agronomia, Paraná</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Como estudante, ter acesso a essa tecnologia foi incrível. Pude praticar o que via na teoria de uma forma muito mais interativa. A AgroTech está realmente à frente do seu tempo."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white bg-pattern">
+            <div class="container mx-auto px-6 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg"><i data-lucide="cpu" class="h-8 w-8 text-white"></i></div>
+                            <div><h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">AgroTech</h3><p class="text-gray-400 font-semibold">Qualifica</p></div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">Revolucionando a capacitação agrícola através da realidade virtual e tecnologias inovadoras.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-400 transition-colors"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+                            <a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-600 transition-colors"><i data-lucide="facebook" class="h-5 w-5"></i></a>
+                            <a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-700 transition-colors"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+                            <a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-pink-500 transition-colors"><i data-lucide="instagram" class="h-5 w-5"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Links Rápidos</h5>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Início</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Sobre</a></li>
+                            <li><a href="services.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Serviços</a></li>
+                            <li><a href="pricing.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Planos</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Nossos Serviços</h5>
+                        <ul class="space-y-3">
+                            <li><a href="VRExperience.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Treinamento VR</a></li>
+                            <li><a href="training.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Certificação</a></li>
+                            <li><a href="services.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Consultoria</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Suporte Técnico</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Legal</h5>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Termos & Condições</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Política de Privacidade</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Suporte ao Cliente</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Perguntas Frequentes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm text-center md:text-left mb-4 md:mb-0">&copy; 2025 AgroTech Qualifica. Todos os Direitos Reservados.</p>
+                    <p class="text-gray-400 text-sm text-center">Desenvolvido com ❤️ para o futuro da agricultura.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+</body>
+</html>
