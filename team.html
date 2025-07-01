@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroTech Qualifica - Nossa Equipa</title>
+    <title>AgroTech Qualifica - Nossa Equipe</title>
     <meta name="description" content="Conheça os profissionais por trás da AgroTech Qualifica.">
     
+    <!-- ===== FAVICON ===== -->
+    <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#047857">
+    <!-- =================== -->
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -53,7 +62,7 @@
             <!-- Top Bar -->
             <div class="hidden lg:block bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white">
                 <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-3 items-center gap-8 py-2 text-sm">
+                    <div class="grid grid-cols-4 items-center gap-4 py-2 text-sm">
                         <div class="flex items-center">
                             <div class="bg-emerald-600 p-2 rounded-full mr-3">
                                 <i data-lucide="map-pin" class="h-5 w-5 text-white"></i>
@@ -69,7 +78,16 @@
                             </div>
                             <div>
                                 <p class="font-bold text-xs uppercase">EMAIL</p>
-                                <p class="text-xs text-emerald-200">agrotech@qualifica.com</p>
+                                <p class="text-xs text-emerald-200">agrotech.gp@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                             <div class="bg-emerald-600 p-2 rounded-full mr-3">
+                                <i data-lucide="instagram" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs uppercase">INSTAGRAM</p>
+                                <p class="text-xs text-emerald-200">@agrotech.mt</p>
                             </div>
                         </div>
                         <div class="flex items-center justify-end">
@@ -78,7 +96,7 @@
                             </div>
                             <div>
                                 <p class="font-bold text-xs uppercase">TELEFONE</p>
-                                <p class="text-xs text-emerald-200">+55 65 98765-4321</p>
+                                <p class="text-xs text-emerald-200">+55 65 0000-0000</p>
                             </div>
                         </div>
                     </div>
@@ -110,8 +128,7 @@
                                 </div>
                             </div>
                             <a href="pricing.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Planos</a>
-                            <a href="team.html" class="px-4 py-2 rounded-lg nav-link-active">Equipa</a>
-                            <a href="blog.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-emerald-600 transition font-semibold">Blog</a>
+                            <a href="team.html" class="px-4 py-2 rounded-lg nav-link-active">Equipe</a>
                             <a href="contact.html" class="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-5 rounded-lg transition-colors shadow-md">Contato</a>
                         </div>
                         <div class="lg:hidden"><button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 focus:outline-none"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
@@ -124,8 +141,7 @@
                         <a href="about.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Sobre</a>
                         <div x-data="{ open: false }"><button @click="open = !open" class="w-full flex justify-between items-center py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold"><span>Soluções</span><i data-lucide="chevron-down" :class="{'rotate-180': open}" class="h-5 w-5 transition-transform"></i></button><div x-show="open" class="ml-4 mt-2 space-y-1"><a href="VRExperience.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Treinamento VR</a><a href="training.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Capacitação</a><a href="services.html" class="block px-4 py-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">Consultoria</a></div></div>
                         <a href="pricing.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Planos</a>
-                        <a href="team.html" class="block py-2 rounded-md font-semibold nav-link-active">Equipa</a>
-                        <a href="blog.html" class="block py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-semibold">Blog</a>
+                        <a href="team.html" class="block py-2 rounded-md font-semibold nav-link-active">Equipe</a>
                         <a href="contact.html" class="block text-center mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition">Contato</a>
                     </div>
                 </div>
@@ -228,12 +244,12 @@
         <footer class="bg-gray-900 text-white bg-pattern">
             <div class="container mx-auto px-6 py-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    <div><div class="flex items-center mb-6"><div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg"><i data-lucide="cpu" class="h-8 w-8 text-white"></i></div><div><h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">AgroTech</h3><p class="text-gray-400 font-semibold">Qualifica</p></div></div><p class="text-gray-300 mb-6 leading-relaxed">Revolucionando a capacitação agrícola através da realidade virtual e tecnologias inovadoras.</p><div class="flex space-x-3"><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-400 transition-colors"><i data-lucide="twitter" class="h-5 w-5"></i></a><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-600 transition-colors"><i data-lucide="facebook" class="h-5 w-5"></i></a><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-700 transition-colors"><i data-lucide="linkedin" class="h-5 w-5"></i></a><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-pink-500 transition-colors"><i data-lucide="instagram" class="h-5 w-5"></i></a></div></div>
+                    <div><div class="flex items-center mb-6"><div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl mr-4 shadow-lg"><i data-lucide="cpu" class="h-8 w-8 text-white"></i></div><div><h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">AgroTech</h3><p class="text-gray-400 font-semibold">Qualifica</p></div></div><p class="text-gray-300 mb-6 leading-relaxed">Revolucionando a capacitação agrícola através da realidade virtual e tecnologias inovadoras.</p><div class="flex space-x-3"><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-600 transition-colors"><i data-lucide="facebook" class="h-5 w-5"></i></a><a href="#" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-blue-700 transition-colors"><i data-lucide="linkedin" class="h-5 w-5"></i></a><a href="https://www.instagram.com/agrotech.mt/" target="_blank" class="bg-gray-700 text-white p-3 rounded-xl hover:bg-pink-500 transition-colors"><i data-lucide="instagram" class="h-5 w-5"></i></a></div></div>
                     <div><h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Links Rápidos</h5><ul class="space-y-3"><li><a href="index.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Início</a></li><li><a href="about.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Sobre</a></li><li><a href="services.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Serviços</a></li><li><a href="pricing.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Planos</a></li></ul></div>
                     <div><h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Nossos Serviços</h5><ul class="space-y-3"><li><a href="VRExperience.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Treinamento VR</a></li><li><a href="training.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Certificação</a></li><li><a href="services.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Consultoria</a></li><li><a href="contact.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Suporte Técnico</a></li></ul></div>
                     <div><h5 class="text-xl font-bold text-white mb-6 border-b-2 border-emerald-600 pb-2 inline-block">Legal</h5><ul class="space-y-3"><li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Termos & Condições</a></li><li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Política de Privacidade</a></li><li><a href="contact.html" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Suporte ao Cliente</a></li><li><a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center group"><span class="mr-2 text-emerald-600 group-hover:translate-x-1 transition-transform">→</span> Perguntas Frequentes</a></li></ul></div>
                 </div>
-                <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400 text-sm text-center md:text-left mb-4 md:mb-0">&copy; 2025 AgroTech Qualifica. Todos os Direitos Reservados.</p><p class="text-gray-400 text-sm text-center">Desenvolvido com ❤️ para o futuro da agricultura.</p></div>
+                <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400 text-sm text-center md:text-left mb-4 md:mb-0">&copy; 2025 AgroTech Qualifica. Todos os Direitos Reservados.</p><p class="text-gray-400 text-sm text-center">Desenvolvido por kznybs</p></div>
             </div>
         </footer>
     </div>
