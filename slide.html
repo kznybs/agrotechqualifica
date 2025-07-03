@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação - AgroTech Qualifica</title>
+
+   <!-- ===== FAVICON ===== -->
+<link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+
+<link rel="manifest" href="favicon_io/site.webmanifest">
+<meta name="theme-color" content="#047857">
+<!-- =================== -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #f0f2f5;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 5rem;
+            box-sizing: border-box;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
+        }
+
+        .slide-bg-image {
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .slide-bg-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26, 58, 25, 0.85) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: -1;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%) scale(1.1);
+            opacity: 1;
+        }
+        #prev-slide { left: 1.5rem; }
+        #next-slide { right: 1.5rem; }
+        
+        .slide-dots {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 0.75rem;
+        }
+        .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        .slide:not(.slide-bg-image) .dot {
+             background-color: rgba(0, 0, 0, 0.2);
+        }
+        .slide:not(.slide-bg-image) .dot.active {
+            background-color: #2d572c;
+        }
+
+        /* Animation classes */
+        .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .active .animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800">
+
+    <div class="slide-container">
+
+        <!-- Slide 1: Title -->
+        <div id="slide-1" class="slide active slide-bg-image" style="background-image: url('https://images.unsplash.com/photo-1580901369227-308f3a30b54e?q=80&w=2070&auto=format&fit=crop');">
+            <div class="relative z-0">
+                <img src="https://i.imgur.com/K2papBR.png" alt="Logo AgroTech Qualifica" class="h-24 md:h-32 mx-auto mb-8 animated">
+                <h1 class="text-4xl md:text-6xl font-bold animated" style="transition-delay: 0.2s;">AgroTech Qualifica</h1>
+                <p class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto text-green-200 animated" style="transition-delay: 0.4s;">Revolucionando a Capacitação no Agronegócio</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div id="slide-2" class="slide">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-10 animated">O Elo Perdido do Agronegócio</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl">
+                <div class="text-left space-y-6">
+                    <p class="text-lg text-slate-600 animated" style="transition-delay: 0.2s;">A tecnologia avança em ritmo acelerado, com máquinas cada vez mais sofisticadas.</p>
+                    <p class="text-lg text-slate-600 animated" style="transition-delay: 0.4s;">No entanto, o investimento não gera retorno se o operador não estiver 100% capacitado para extrair seu potencial máximo.</p>
+                    <p class="mt-6 text-xl font-semibold text-red-600 animated" style="transition-delay: 0.6s;">Este gap resulta em perdas de produtividade, custos elevados e riscos de segurança.</p>
+                </div>
+                <div class="flex justify-center animated" style="transition-delay: 0.8s;">
+                    <i class="fa-solid fa-link-slash text-9xl text-red-200"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Solution -->
+        <div id="slide-3" class="slide bg-slate-100">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-10 animated">Nossa Solução: Capacitação Imersiva</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl">
+                <div class="bg-white p-8 rounded-2xl shadow-lg animated" style="transition-delay: 0.2s;">
+                    <div class="bg-green-100 text-green-700 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-6"><i class="fa-solid fa-chalkboard-user text-4xl"></i></div>
+                    <h3 class="text-xl font-semibold">Teoria Interativa</h3>
+                    <p class="mt-2 text-slate-600">Módulos objetivos sobre os fundamentos da máquina e da tecnologia.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg animated" style="transition-delay: 0.4s;">
+                    <div class="bg-green-100 text-green-700 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-6"><i class="fa-solid fa-vr-cardboard text-4xl"></i></div>
+                    <h3 class="text-xl font-semibold">Simulação em VR</h3>
+                    <p class="mt-2 text-slate-600">Prática em ambiente virtual seguro, idêntico ao real, sem riscos ou custos.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg animated" style="transition-delay: 0.6s;">
+                    <div class="bg-green-100 text-green-700 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-6"><i class="fa-solid fa-tractor text-4xl"></i></div>
+                    <h3 class="text-xl font-semibold">Maestria em Campo</h3>
+                    <p class="mt-2 text-slate-600">Operadores confiantes e prontos para maximizar a eficiência desde o primeiro dia.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Key Benefits -->
+        <div id="slide-4" class="slide">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-10 animated">Benefícios Diretos para o seu Negócio</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center animated" style="transition-delay: 0.2s;"><div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><i class="fas fa-shield-halved text-3xl text-green-600"></i></div><h3 class="font-semibold text-lg">Segurança Máxima</h3><p class="mt-1 text-slate-600 text-sm">Zero acidentes durante o treinamento.</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center animated" style="transition-delay: 0.4s;"><div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><i class="fas fa-lightbulb text-3xl text-yellow-500"></i></div><h3 class="font-semibold text-lg">Alta Retenção</h3><p class="mt-1 text-slate-600 text-sm">Aumento de 75% na retenção do conhecimento.</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center animated" style="transition-delay: 0.6s;"><div class="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><i class="fas fa-coins text-3xl text-amber-500"></i></div><h3 class="font-semibold text-lg">Retorno Financeiro</h3><p class="mt-1 text-slate-600 text-sm">Redução de custos com combustível e insumos.</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center animated" style="transition-delay: 0.8s;"><div class="bg-sky-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><i class="fas fa-vr-cardboard text-3xl text-sky-500"></i></div><h3 class="font-semibold text-lg">Prática Realista</h3><p class="mt-1 text-slate-600 text-sm">Simulações fiéis às condições do campo.</p></div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Data & Graphics -->
+        <div id="slide-5" class="slide bg-slate-100">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-10 animated">A Eficiência em Números</h2>
+            <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 rounded-2xl shadow-xl animated" style="transition-delay: 0.2s;">
+                    <canvas id="efficiencyChart" aria-label="Gráfico de barras mostrando os ganhos com tecnologia" role="img"></canvas>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl animated" style="transition-delay: 0.4s;">
+                    <canvas id="vrTrainingChart" aria-label="Gráfico de pizza mostrando a eficácia da retenção de conhecimento" role="img"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Call to Action -->
+        <div id="slide-6" class="slide slide-bg-image" style="background-image: url('https://images.unsplash.com/photo-1563514227-99372245943a?q=80&w=1974&auto=format&fit=crop');">
+            <div class="relative z-0">
+                <h2 class="text-4xl md:text-6xl font-bold animated">Pronto para Colher Melhores Resultados?</h2>
+                <p class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto text-green-200 animated" style="transition-delay: 0.2s;">Vamos conversar sobre como a AgroTech Qualifica pode transformar a sua operação.</p>
+                <div class="mt-10 animated" style="transition-delay: 0.4s;">
+                    <a href="mailto:contato@agrotechqualifica.com.br" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-105 text-lg">
+                        Agende uma Demonstração
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div id="prev-slide" class="nav-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+        <div id="next-slide" class="nav-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div id="slide-dots" class="slide-dots"></div>
+
+    </div>
+
+    <script>
+    (function() {
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        const dotsContainer = document.getElementById('slide-dots');
+        let currentSlide = 0;
+        let chartsRendered = false;
+
+        function createDots() {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => showSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function showSlide(index) {
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
+            
+            currentSlide = index;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            updateDots();
+            
+            if (index === 4 && !chartsRendered) {
+                renderCharts();
+                chartsRendered = true;
+            }
+        }
+
+        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        });
+
+        function renderCharts() {
+            Chart.defaults.font.family = "'Poppins', sans-serif";
+            Chart.defaults.color = '#475569';
+            Chart.defaults.plugins.title.font = { size: 18, weight: '600' };
+            Chart.defaults.plugins.title.color = '#1e293b';
+
+            const ctxEfficiency = document.getElementById('efficiencyChart')?.getContext('2d');
+            if (ctxEfficiency) {
+                new Chart(ctxEfficiency, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Custos', 'Produtividade', 'Água', 'Perdas'],
+                        datasets: [{
+                            label: 'Impacto Médio (%)',
+                            data: [15, 8, 60, 12],
+                            backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                            borderColor: 'rgba(22, 163, 74, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Ganhos com Tecnologia' },
+                            legend: { display: false }
+                        },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            const ctxVrTraining = document.getElementById('vrTrainingChart')?.getContext('2d');
+            if (ctxVrTraining) {
+                new Chart(ctxVrTraining, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Retenção (VR)', 'Retenção (Tradicional)'],
+                        datasets: [{
+                            data: [75, 25],
+                            backgroundColor: ['#22c55e', '#e2e8f0'],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '70%',
+                        plugins: {
+                            title: { display: true, text: 'Eficácia da Retenção' },
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Initial load
+        createDots();
+        showSlide(currentSlide);
+    })();
+    </script>
+
+</body>
+</html>
