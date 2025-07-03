@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>AgroTech Qualifica - Revolucionando a Capacitação no Agronegócio</title>
+    <meta name="description" content="Capacitação com Realidade Virtual (VR) para operadores de máquinas agrícolas. Aumente a produtividade, reduza custos e maximize a segurança com a AgroTech Qualifica.">
+    <meta name="keywords" content="agrotech, agricultura de precisão, realidade virtual, vr, treinamento agrícola, capacitação, agronegócio, embrapa, fao">
+    <meta name="author" content="AgroTech Qualifica">
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="shortcut icon" href="https://i.imgur.com/K2papBR.png" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/K2papBR.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/K2papBR.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/K2papBR.png">
+    <meta name="theme-color" content="#2d572c">
+    <!-- =================== -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Custom styles for a premium look and feel */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc; /* Light mode background */
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(45, 87, 44, 0.95) 0%, rgba(26, 58, 25, 0.98) 100%);
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Animation for elements appearing on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* FAQ Accordion styles - CORRECTED */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out; /* Removed padding transition for smoothness */
+        }
+        .accordion-button.active + .accordion-content {
+            /* Padding is now applied to a nested div for a stable transition */
+        }
+        .accordion-button .icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-700">
+
+    <!-- Header & Hero Section -->
+    <header class="relative text-white overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1580901369227-308f3a30b54e?q=80&w=2070&auto=format&fit=crop" alt="Campo agrícola com tecnologia de ponta ao amanhecer" class="w-full h-full object-cover" loading="eager">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+            <img src="https://i.imgur.com/K2papBR.png" alt="Logo AgroTech Qualifica" class="h-20 md:h-24 mx-auto mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">A Ponte Entre a Tecnologia e a Produtividade no Campo</h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-green-200">Capacitamos operadores de máquinas agrícolas com simulações em Realidade Virtual (VR) ultra-realistas, transformando potencial tecnológico em lucro real.</p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#validacao-projeto" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-transform duration-300 transform hover:scale-105">
+                    Descubra os Benefícios
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 md:px-8 py-12">
+
+        <!-- How It Works Section -->
+        <section id="como-funciona" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Como Funciona Nossa Capacitação</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Um processo simples e eficaz em 3 etapas para a maestria operacional.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-xl card-shadow reveal">
+                    <div class="bg-green-100 text-green-700 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-chalkboard-user text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">1. Módulo Teórico</h3>
+                    <p class="mt-2 text-slate-600">Fundamentos da máquina e da tecnologia de precisão apresentados de forma interativa e objetiva.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-xl card-shadow reveal" style="transition-delay: 0.2s;">
+                    <div class="bg-green-100 text-green-700 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-vr-cardboard text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">2. Simulação em VR</h3>
+                    <p class="mt-2 text-slate-600">O operador pratica em um ambiente virtual idêntico ao real, enfrentando desafios e dominando cada função sem riscos.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-xl card-shadow reveal" style="transition-delay: 0.4s;">
+                    <div class="bg-green-100 text-green-700 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-tractor text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">3. Aplicação Prática</h3>
+                    <p class="mt-2 text-slate-600">Com a confiança e o conhecimento adquiridos, o operador vai a campo pronto para extrair o máximo da tecnologia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Stories Section -->
+        <section id="historias-reais" class="py-16 bg-slate-50 rounded-2xl">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Resultados Reais: O Impacto da Tecnologia no Campo</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Dados e depoimentos de quem já colhe os frutos da capacitação de ponta.</p>
+            </div>
+            <div class="space-y-12 px-4">
+                <!-- Story 1 -->
+                <article class="bg-white p-6 md:p-8 rounded-2xl card-shadow flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto reveal">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop" alt="Foto de um gerente de cooperativa sorrindo" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-200 flex-shrink-0" loading="lazy">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-800">Cooperativa Agroindustrial, Paraná</h3>
+                        <blockquote class="mt-4 border-l-4 border-green-500 pl-4 italic text-slate-700">
+                            "O treinamento virtual eliminou os erros de configuração. Conseguimos um mapa de produtividade fiel à realidade, o que nos permitiu otimizar a fertilização e aumentar o lucro em 8% por hectare na safra seguinte."
+                        </blockquote>
+                    </div>
+                </article>
+                 <!-- Story 2 -->
+                <article class="bg-white p-6 md:p-8 rounded-2xl card-shadow flex flex-col md:flex-row-reverse items-center gap-8 max-w-4xl mx-auto reveal">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" alt="Foto de uma agrônoma no campo" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-200 flex-shrink-0" loading="lazy">
+                    <div class="text-center md:text-right">
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-800">Grupo de Produtores, Bahia</h3>
+                         <blockquote class="mt-4 border-r-4 md:border-r-0 md:border-l-4 border-green-500 pr-4 md:pr-0 md:pl-4 italic text-slate-700">
+                            "A capacitação em VR foi um divisor de águas. Reduzimos a sobreposição de defensivos em 12% e o tempo de treinamento em 40%. Os operadores chegam ao campo prontos e confiantes."
+                        </blockquote>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Data and Graphics Section -->
+        <section id="dados-e-graficos" class="py-16">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">A Eficiência em Números</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Dados de mercado e estudos acadêmicos comprovam o retorno sobre o investimento.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 md:p-8 rounded-2xl card-shadow reveal">
+                    <canvas id="efficiencyChart" aria-label="Gráfico de barras mostrando os ganhos com tecnologia" role="img"></canvas>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl card-shadow reveal" style="transition-delay: 0.2s;">
+                    <canvas id="vrTrainingChart" aria-label="Gráfico de pizza mostrando a eficácia da retenção de conhecimento" role="img"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section id="tecnologia" class="py-16 bg-slate-50 rounded-2xl">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Tecnologia de Ponta</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Utilizamos o que há de mais moderno para criar uma experiência de aprendizado imersiva e eficaz.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+                <div class="bg-white p-8 rounded-xl card-shadow reveal"><i class="fa-brands fa-meta text-4xl text-blue-600 mb-4"></i><h3 class="text-xl font-semibold text-slate-800">Hardware VR</h3><p class="mt-2 text-slate-600">Simulações compatíveis com os principais headsets do mercado, como a linha Meta Quest, garantindo acessibilidade e alta fidelidade visual.</p></div>
+                <div class="bg-white p-8 rounded-xl card-shadow reveal" style="transition-delay: 0.2s;"><i class="fa-solid fa-cube text-4xl text-slate-700 mb-4"></i><h3 class="text-xl font-semibold text-slate-800">Software de Simulação</h3><p class="mt-2 text-slate-600">Desenvolvido em motores gráficos como Unity e Unreal Engine para replicar com precisão a física e o comportamento das máquinas.</p></div>
+                <div class="bg-white p-8 rounded-xl card-shadow reveal" style="transition-delay: 0.4s;"><i class="fa-solid fa-chart-line text-4xl text-green-600 mb-4"></i><h3 class="text-xl font-semibold text-slate-800">Análise de Desempenho</h3><p class="mt-2 text-slate-600">Nossa plataforma coleta dados de cada simulação para gerar relatórios detalhados sobre o progresso e as áreas de melhoria do operador.</p></div>
+            </div>
+        </section>
+
+        <!-- Validation Section -->
+        <section id="validacao-projeto" class="py-16">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Por que o AgroTech Qualifica é a Escolha Certa?</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Garantimos que seu investimento em tecnologia traga o máximo retorno.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+                <div class="bg-white p-6 rounded-lg card-shadow reveal"><i class="fas fa-shield-halved text-3xl text-green-600 mb-4"></i><h3 class="font-semibold text-slate-800 text-lg">Segurança Máxima</h3><p class="mt-1 text-slate-600">Treino em cenários de risco sem perigo real.</p></div>
+                <div class="bg-white p-6 rounded-lg card-shadow reveal" style="transition-delay: 0.1s;"><i class="fas fa-lightbulb text-3xl text-yellow-500 mb-4"></i><h3 class="font-semibold text-slate-800 text-lg">Alta Retenção</h3><p class="mt-1 text-slate-600">Aumento de 75% na retenção do conhecimento.</p></div>
+                <div class="bg-white p-6 rounded-lg card-shadow reveal" style="transition-delay: 0.2s;"><i class="fas fa-coins text-3xl text-amber-500 mb-4"></i><h3 class="font-semibold text-slate-800 text-lg">Retorno Financeiro</h3><p class="mt-1 text-slate-600">Redução de custos com combustível e manutenção.</p></div>
+                <div class="bg-white p-6 rounded-lg card-shadow reveal" style="transition-delay: 0.3s;"><i class="fas fa-vr-cardboard text-3xl text-sky-500 mb-4"></i><h3 class="font-semibold text-slate-800 text-lg">Prática Realista</h3><p class="mt-1 text-slate-600">Simulações fiéis às máquinas e ao campo.</p></div>
+            </div>
+        </section>
+
+        <!-- FAQ Section - CORRECTED -->
+        <section id="faq" class="py-16 bg-slate-50 rounded-2xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Perguntas Frequentes</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4 px-4">
+                <div class="bg-white rounded-lg card-shadow reveal">
+                    <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-slate-800" aria-expanded="false">
+                        Quais máquinas podem ser simuladas?
+                        <i class="icon fa-solid fa-chevron-down text-slate-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 text-slate-600">
+                            Nossa plataforma é modular. Desenvolvemos simulações para qualquer tipo de maquinário agrícola, desde colheitadeiras e pulverizadores até tratores com implementos específicos, de acordo com a necessidade do cliente.
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg card-shadow reveal" style="transition-delay: 0.1s;">
+                    <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-slate-800" aria-expanded="false">
+                        É necessário ter experiência com Realidade Virtual?
+                        <i class="icon fa-solid fa-chevron-down text-slate-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 text-slate-600">
+                            Absolutamente não. Nossa interface é intuitiva e projetada para iniciantes. Fornecemos todo o suporte necessário para que o primeiro contato com a tecnologia seja simples e produtivo.
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg card-shadow reveal" style="transition-delay: 0.2s;">
+                    <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-slate-800" aria-expanded="false">
+                        Como o retorno sobre o investimento (ROI) é medido?
+                        <i class="icon fa-solid fa-chevron-down text-slate-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 text-slate-600">
+                            O ROI é medido através de indicadores claros: economia de combustível, redução de custos com manutenção corretiva, diminuição de perdas na colheita, otimização do uso de insumos e aumento da vida útil do equipamento.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <img src="https://i.imgur.com/K2papBR.png" alt="Logo AgroTech Qualifica" class="h-12 mx-auto md:mx-0 mb-4">
+                    <p class="text-sm">Revolucionando a capacitação no agronegócio com tecnologia imersiva.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Navegação</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#como-funciona" class="hover:text-green-400 transition-colors">Como Funciona</a></li>
+                        <li><a href="#historias-reais" class="hover:text-green-400 transition-colors">Resultados</a></li>
+                        <li><a href="#validacao-projeto" class="hover:text-green-400 transition-colors">Benefícios</a></li>
+                        <li><a href="#faq" class="hover:text-green-400 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-right">
+                     <h3 class="font-bold text-white mb-4">Pronto para Começar?</h3>
+                    <a href="mailto:contato@agrotechqualifica.com.br" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-transform duration-300 transform hover:scale-105">
+                        Agendar Demonstração
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-8 pt-6 text-center text-sm">
+                <p>&copy; 2025 AgroTech Qualifica. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Self-invoking function to encapsulate all scripts and avoid polluting the global scope
+    (function() {
+        // --- CORE LOGIC ---
+        
+        /**
+         * Initializes all interactive components on the page after the DOM is fully loaded.
+         */
+        function initializePage() {
+            setupIntersectionObserver();
+            setupAccordion();
+            renderCharts();
+        }
+
+        /**
+         * Sets up the Intersection Observer to reveal elements on scroll.
+         * This improves performance by animating elements only when they are in the viewport.
+         */
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        /**
+         * Sets up the accordion functionality for the FAQ section.
+         * Handles ARIA attributes for accessibility.
+         */
+        function setupAccordion() {
+            document.querySelectorAll('.accordion-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                    button.classList.toggle('active');
+                    button.setAttribute('aria-expanded', !isExpanded);
+
+                    if (!isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0px';
+                    }
+                });
+            });
+        }
+
+        /**
+         * Renders all charts on the page using Chart.js.
+         * Encapsulates chart creation logic.
+         */
+        function renderCharts() {
+            // Chart.js Global Configuration for a consistent look
+            Chart.defaults.font.family = "'Poppins', sans-serif";
+            Chart.defaults.color = '#475569';
+
+            // Bar Chart for Efficiency Gains
+            const ctxEfficiency = document.getElementById('efficiencyChart')?.getContext('2d');
+            if (ctxEfficiency) {
+                new Chart(ctxEfficiency, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Redução de Custos', 'Aumento de Produtividade', 'Economia de Água', 'Redução de Perdas'],
+                        datasets: [{
+                            label: 'Impacto Médio (%)',
+                            data: [15, 8, 60, 12],
+                            backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                            borderColor: 'rgba(22, 163, 74, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Ganhos com Tecnologia e Treinamento', font: { size: 18, weight: '600' }, padding: { bottom: 20 }, color: '#1e293b' },
+                            legend: { display: false }
+                        },
+                        scales: { y: { beginAtZero: true, grid: { color: '#e2e8f0' } }, x: { grid: { display: false } } }
+                    }
+                });
+            }
+
+            // Doughnut Chart for Training Efficacy
+            const ctxVrTraining = document.getElementById('vrTrainingChart')?.getContext('2d');
+            if (ctxVrTraining) {
+                new Chart(ctxVrTraining, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Retenção de Aprendizagem (VR)', 'Retenção (Tradicional)'],
+                        datasets: [{
+                            data: [75, 25],
+                            backgroundColor: ['#22c55e', '#e2e8f0'],
+                            hoverOffset: 8,
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '70%',
+                        plugins: {
+                            title: { 
+                                display: true, 
+                                text: 'Eficácia da Retenção de Conhecimento', 
+                                font: { size: 18, weight: '600' }, 
+                                padding: { bottom: 20 }, 
+                                color: '#1e293b' 
+                            },
+                            tooltip: { 
+                                callbacks: { 
+                                    label: (context) => `${context.label}: ${context.parsed}%` 
+                                },
+                                padding: 12,
+                                boxPadding: 4
+                            },
+                            legend: { 
+                                position: 'bottom', 
+                                labels: { 
+                                    usePointStyle: true, 
+                                    pointStyle: 'rectRounded',
+                                    padding: 20
+                                } 
+                            }
+                        },
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true
+                        }
+                    }
+                });
+            }
+        }
+
+        // --- INITIALIZATION ---
+        
+        // Ensure the DOM is fully loaded before running scripts
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            initializePage();
+        }
+    })();
+    </script>
+
+</body>
+</html>
